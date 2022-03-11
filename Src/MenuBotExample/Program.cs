@@ -10,7 +10,7 @@ using TelegramUpdater.UpdateContainer;
 
 
 var updater = new Updater(
-    "767823063:AAE9QwKr2glkkiYe4OMt7lvNWkyymM6Zvm0",
+    "BOT_TOKEN",
     preUpdateProcessorType: typeof(MyPreProcessor));
 
 
