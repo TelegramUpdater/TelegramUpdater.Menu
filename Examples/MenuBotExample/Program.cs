@@ -26,11 +26,11 @@ var myMenu = new MainMenu(
     "This is a test menu",
     "TestMenu",
     menu: new PagingMenu(
-        "Docs", "Documentions", "Read my docs here.",
+        "Docs", "Documentations", "Read my docs here.",
         pagingMenuOptions,
-        new[] { ("🍕", "Documentions on part 1") },
-        new[] { ("🍔", "Documentions on part 2"), ("🌭", "Documentions on part 3") },
-        new[] { ("🍟", "Documentions on part 4"), ("🍿", "Documentions on part 5"), ("🍳", "Documentions on part 6") }));
+        [("🍕", "Documentations on part 1")],
+        [("🍔", "Documentations on part 2"), ("🌭", "Documentations on part 3")],
+        [("🍟", "Documentations on part 4"), ("🍿", "Documentations on part 5"), ("🍳", "Documentations on part 6")]));
 
 
 updater.AddMenuManager("myPagingMenu", myMenu);
@@ -38,17 +38,17 @@ updater.AddMenuManager("myPagingMenu", myMenu);
 updater.AddSingletonUpdateHandler(
     UpdateType.Message,
     ShowMenuHandler,
-    FilterCutify.OnCommand("menu"));
+    ReadyFilters.OnCommand("menu"));
 
 
 static async Task ShowMenuHandler(IContainer<Message> container)
 {
     if (container.Updater.TryGetInlineMenuManager("myPagingMenu", out var manager))
     {
-        await container.ResponseAsync(
+        await container.Response(
             manager.MainMenu.Description,
             replyMarkup: manager.OpeningMarkup);
     }
 }
 
-await updater.StartAsync();
+await updater.Start();

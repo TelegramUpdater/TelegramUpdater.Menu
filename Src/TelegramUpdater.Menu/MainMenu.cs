@@ -2,45 +2,61 @@
 
 namespace TelegramUpdater.Menu;
 
-public sealed class MainMenu: AbstractMenu
+/// <summary>
+/// The main menu.
+/// </summary>
+/// <remarks>
+/// Create a new instance of <see cref="MainMenu"/>.
+/// </remarks>
+/// <param name="name"></param>
+/// <param name="description"></param>
+/// <param name="prefix"></param>
+/// <param name="options"></param>
+/// <param name="menus"></param>
+public sealed class MainMenu(
+    string name,
+    string description,
+    string prefix,
+    MainMenuOptions options = default,
+    params IMenu[][]? menus) : AbstractMenu("~", name, description, options.Hidden, menus)
 {
-    public MainMenu(
-        string name,
-        string description,
-        string prefix,
-        MainMenuOptions options = default,
-        params IMenu[][]? menus)
-        : base("~", name, description, options.Hidden, menus)
-    {
-        Prefix = prefix;
-        Separator = options.Separator;
-    }
-
+    /// <summary>
+    /// Create a new instance of <see cref="MainMenu"/>.
+    /// </summary>
     public MainMenu(
         string name,
         string description,
         string prefix,
         MainMenuOptions options = default,
         params IMenu[]? menus)
-        : this(name, description, prefix, options, menus is not null? new IMenu[][]
-        {
+        : this(name, description, prefix, options, menus is not null?
+        [
             menus
-        }: Array.Empty<IMenu[]>())
+        ]: [])
     { }
 
+    /// <summary>
+    /// Create a new instance of <see cref="MainMenu"/>.
+    /// </summary>
     public MainMenu(
         string name,
         string description,
         string prefix,
         MainMenuOptions options = default,
         IMenu? menu = null)
-        : this(name, description, prefix, options, menu is not null ? new IMenu[][]
-        {
-            new IMenu[] { menu }
-        } : Array.Empty<IMenu[]>())
+        : this(name, description, prefix, options, menu is not null ?
+        [
+            [menu]
+        ] : [])
     { }
 
-    public string Prefix { get; }
+    /// <summary>
+    /// Prefix
+    /// </summary>
+    public string Prefix { get; } = prefix;
 
-    public char Separator { get; }
+    /// <summary>
+    /// Separator.
+    /// </summary>
+    public char Separator { get; } = options.Separator;
 }

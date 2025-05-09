@@ -3,6 +3,9 @@ using TelegramUpdater.Menu;
 
 namespace TelegramUpdater;
 
+/// <summary>
+/// Extension methods for menus.
+/// </summary>
 public static class Extensions
 {
     /// <summary>
@@ -57,7 +60,7 @@ public static class Extensions
     {
         if (updater.ContainsKey(key))
         {
-            menuManager = (InlineMenuManager)updater[key];
+            menuManager = (InlineMenuManager)updater[key]!;
             return true;
         }
 

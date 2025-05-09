@@ -1,10 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-
+	<TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<LangVersion>latest</LangVersion>
+	<Nullable>enable</Nullable>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	<Authors>immmdreza</Authors>
 	<Company>TelegramUpdater</Company>
 	<Version>1.0.0-preview.0.1</Version>
@@ -38,7 +40,7 @@
 	</ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="TelegramUpdater" Version="1.4.0-preview.2.4" />
+	  <PackageReference Include="TelegramUpdater" Version="1.8.0-preview.0.1" />
   </ItemGroup>
 
 </Project>

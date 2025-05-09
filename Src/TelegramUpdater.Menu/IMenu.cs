@@ -39,6 +39,6 @@ public interface IMenu
         return Menus?.Select(x => x.Where(x=> !x.Hidden)
             .Select(y => InlineKeyboardButton.WithCallbackData(
                 y.Name, getCallbackFormPath(y.Path))))
-            ?? Array.Empty<IEnumerable<InlineKeyboardButton>>();
+            ?? [];
     }
 }

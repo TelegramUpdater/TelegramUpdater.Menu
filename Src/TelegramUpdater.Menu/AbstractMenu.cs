@@ -1,7 +1,19 @@
 ﻿namespace TelegramUpdater.Menu;
 
+/// <summary>
+/// Abstract base for <see cref="IMenu"/>.
+/// </summary>
 public abstract class AbstractMenu: IMenu
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <param name="name"></param>
+    /// <param name="description"></param>
+    /// <param name="hidden"></param>
+    /// <param name="menus"></param>
+    /// <exception cref="ArgumentException"></exception>
     protected AbstractMenu(
         string tag,
         string name,
@@ -52,5 +64,6 @@ public abstract class AbstractMenu: IMenu
     /// <inheritdoc/>
     public bool Relative => false;
 
+    /// <inheritdoc/>
     public bool Hidden { get; }
 }

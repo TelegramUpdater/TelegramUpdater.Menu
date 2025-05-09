@@ -26,11 +26,11 @@ updater.AddSingletonUpdateHandler(
     {
         if (cntr.Updater.TryGetInlineMenuManager("myMenu", out var manager))
         {
-            await cntr.ResponseAsync(
+            await cntr.Response(
                 manager.MainMenu.Description,
                 replyMarkup: manager.OpeningMarkup);
         }
     },
-    FilterCutify.OnCommand("menu"));
+    ReadyFilters.OnCommand("menu"));
 
-await updater.StartAsync();
+await updater.Start();
